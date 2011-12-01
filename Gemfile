@@ -25,6 +25,8 @@ gem 'enju_event', :git => 'git://github.com/nabeta/enju_event.git'
 #gem 'enju_news', :git => 'git://github.com/nabeta/enju_news.git'
 gem 'enju_search_log', :git => 'git://github.com/nabeta/enju_search_log.git'
 
+gem 'mime-types'
+
 platforms :ruby do
   gem 'pg'
   #gem 'mysql2', '~> 0.3'

@@ -383,10 +383,11 @@ class ManifestationsController < ApplicationController
       #format.js
       format.download {
         if @manifestation.attachment.path
+          mimetype = MIME::Types.type_for(@manifestation.attachment_file_name)[0].to_s
           if configatron.uploaded_file.storage == :s3
-            send_data @manifestation.attachment.data, :filename => @manifestation.attachment_file_name, :type => 'application/octet-stream'
+            send_data @manifestation.attachment.data, :filename => @manifestation.attachment_file_name, :type => mimetype
           else
-            send_file file, :filename => @manifestation.attachment_file_name, :type => 'application/octet-stream'
+            send_file file, :filename => @manifestation.attachment_file_name, :type => mimetype
           end
         else
           render :template => 'page/404', :status => 404
